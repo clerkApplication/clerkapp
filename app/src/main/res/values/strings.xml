@@ -4,4 +4,5 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
     <string name="to_enter">Войти</string>
+    <string name="did_not_register">Еще не зарегистрированы или забыли пароль?  Обратитесь к Администратор</string>
 </resources>
