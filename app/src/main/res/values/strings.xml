@@ -5,4 +5,7 @@
     <string name="password">Пароль</string>
     <string name="to_enter">Войти</string>
     <string name="did_not_register">Еще не зарегистрированы или забыли пароль?  Обратитесь к Администратор</string>
+    <string name="remove_user">Удаление пользователя</string>
+    <string name="change_user_password">Смена пароля пользователя</string>
+    <string name="user_registration">Регистрация пользователя</string>
 </resources>
