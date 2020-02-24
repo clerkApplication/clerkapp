@@ -48,10 +48,11 @@
             tools:ignore="ContentDescription" />
 
         <EditText
+            android:id="@+id/loginEditText"
             style="@style/loginEditText"
             android:background="@color/lowTransparentWhiteColor"
             android:hint="@string/login"
-            android:inputType="text"
+            android:inputType="textVisiblePassword"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +81,7 @@
         <ImageView
             android:id="@+id/passwordIcon"
             style="@style/loginIcon"
-            android:background="@color/lowTransparentWhiteColor"
+            android:background="@color/strongTransparentWhiteColor"
             android:src="@drawable/password_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,8 +89,9 @@
             tools:ignore="ContentDescription" />
 
         <EditText
+            android:id="@+id/passwordEditText"
             style="@style/loginEditText"
-            android:background="@color/veryLowTransparentWhiteColor"
+            android:background="@color/lowTransparentWhiteColor"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="18sp"
@@ -110,6 +112,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+        android:id="@+id/enterButton"
         android:layout_width="240dp"
         android:layout_height="46dp"
         android:layout_marginTop="32dp"
