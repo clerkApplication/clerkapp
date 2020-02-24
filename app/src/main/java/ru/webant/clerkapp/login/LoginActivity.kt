@@ -12,6 +12,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.webant.clerkapp.R
+import ru.webant.clerkapp.admin.AdminActivity
 import ru.webant.clerkapp.main.MainActivity
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
@@ -24,12 +25,37 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        presenter.checkIsUserSignedIn()
+
         enterButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
         handleEditTextsChangeListener()
+        setListeners()
+    }
+
+    override fun openMainActivity() {
+        openActivityWithFinish(MainActivity())
+    }
+
+    override fun openAdminActivity() {
+        openActivityWithFinish(AdminActivity())
+    }
+
+    private fun openActivityWithFinish(activity: MvpAppCompatActivity) {
+        val intent = Intent(this, activity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun setListeners() {
+        enterButton.setOnClickListener {
+            val email = loginEditText.text.toString()
+            val password = passwordEditText.text.toString()
+            presenter.signIn(email, password)
+        }
     }
 
     private fun handleEditTextsChangeListener() {
