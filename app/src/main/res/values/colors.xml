@@ -5,8 +5,16 @@
     <color name="colorAccent">#424B72</color>
 
     <color name="backgroundColor">#4A547E</color>
+    <color name="transparentBackgroundColor">#604A547E</color>
     <color name="strongTransparentWhiteColor">#70FFFFFF</color>
     <color name="mediumTransparentWhiteColor">#60FFFFFF</color>
     <color name="lowTransparentWhiteColor">#40FFFFFF</color>
     <color name="veryLowTransparentWhiteColor">#10FFFFFF</color>
+    
+    <color name="inactiveEditTextBackground">#204d4d80</color>
+
+    <color name="textColor">#614A547E</color>
+    <color name="bottomLineColor">#804A547E</color>
+
+    <color name="orangeColor">#FF9B3F</color>
 </resources>

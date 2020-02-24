@@ -8,4 +8,6 @@
     <string name="remove_user">Удаление пользователя</string>
     <string name="change_user_password">Смена пароля пользователя</string>
     <string name="user_registration">Регистрация пользователя</string>
+    <string name="email">Эл. почта</string>
+    <string name="ready_button">Готово</string>
 </resources>
