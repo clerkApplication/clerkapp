@@ -7,19 +7,29 @@ import com.google.firebase.auth.FirebaseAuth
 @InjectViewState
 class LoginPresenter : MvpPresenter<LoginView>() {
 
-    private val TAG = "LoginPresenter"
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        checkIsUserSignedIn()
+    }
 
-
-    fun checkIsUserSignedIn() {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            viewState.openMainActivity()
+    fun signIn(email: String, password: String) {
+        if (email == "admin" && password == "admin") {
+            viewState.openAdminActivity()
+        } else {
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    viewState.openMainActivity()
+                }
+                .addOnFailureListener {
+                    viewState.showToast(it.message.toString())
+                }
         }
     }
 
-    fun signIn(login: String, password: String) {
-        if (login == "admin" && password == "admin") {
-            viewState.openAdminActivity()
+    private fun checkIsUserSignedIn() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null && user.uid != "admin") {
+            viewState.openMainActivity()
         }
     }
 }

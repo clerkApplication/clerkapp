@@ -11,4 +11,7 @@ interface LoginView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun openAdminActivity()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showToast(message: String)
 }

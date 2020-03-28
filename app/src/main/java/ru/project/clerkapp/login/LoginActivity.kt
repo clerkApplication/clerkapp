@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -14,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.main.MainActivity
-import ru.project.clerkapp.utils.Extensions
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 
@@ -26,8 +26,6 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-//        presenter.checkIsUserSignedIn()
-
         enterButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -35,6 +33,10 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
         handleEditTextsChangeListener()
         setListeners()
+    }
+
+    override fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun openMainActivity() {
