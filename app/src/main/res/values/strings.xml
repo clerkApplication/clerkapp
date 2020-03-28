@@ -28,6 +28,10 @@
     <string name="change_password_hint">Введите Эл. почту и на нее придёт сообщение для восстановления пароля.</string>
     <string name="confirm_password">Подтверждение пароля</string>
 
+    <string name="chat">Чат</string>
+    <string name="tasks">Задачи</string>
+    <string name="profile">Профиль</string>
+
 
     <string-array name="ranks">
         <item>Должность</item>
