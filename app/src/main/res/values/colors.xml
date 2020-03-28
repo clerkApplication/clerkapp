@@ -17,8 +17,10 @@
     <color name="spinnerBackground">#E2E8F9</color>
 
     <color name="darkTextColor">#614A547E</color>
-    <color name="textColor">#4A547E</color>
+    <color name="defaultTextColor">#4A547E</color>
     <color name="bottomLineColor">#804A547E</color>
+
+    <color name="greyTextColor">#A5AABF</color>
 
     <color name="inactiveViewColor">#A5AABF</color>
 
