@@ -43,6 +43,14 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
+    override fun changeButtonState(state: Boolean) {
+        createButton.isEnabled = state
+    }
+
+    override fun backToUserManagerFragment() {
+        fragmentManager?.popBackStack()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setListeners() {
         createButton.setOnClickListener {

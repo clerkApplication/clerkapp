@@ -11,6 +11,12 @@ import java.text.SimpleDateFormat
 class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
 
     fun createNewUser(user: User, password: String) {
+        viewState.changeButtonState(false)
+
+        if (!areFieldsValid(user)) {
+            viewState.changeButtonState(true)
+            return
+        }
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(user.email, password)
             .addOnSuccessListener {
@@ -19,13 +25,16 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
                     database.collection("users").document(userUid).set(user)
                         .addOnSuccessListener {
                             viewState.showToast("Пользователь создан")
+                            viewState.backToUserManagerFragment()
                         }
                         .addOnFailureListener { exception ->
                             viewState.showToast(exception.message.toString())
+                            viewState.changeButtonState(true)
                         }
                 }
             }
             .addOnFailureListener { exception ->
+                viewState.changeButtonState(true)
                 viewState.showToast(exception.message.toString())
             }
     }
@@ -36,5 +45,17 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
             return it.time
         }
         return 0
+    }
+
+    private fun areFieldsValid(user: User): Boolean {
+        if (user.rank == "Должность") {
+            viewState.showToast("Выберите должность.")
+            return false
+        }
+        if (user.birthday > System.currentTimeMillis()) {
+            viewState.showToast("Выберите корректную дату рождения.")
+            return false
+        }
+        return true
     }
 }
