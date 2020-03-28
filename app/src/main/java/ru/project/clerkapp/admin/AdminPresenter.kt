@@ -6,4 +6,8 @@ import com.arellomobile.mvp.MvpPresenter
 @InjectViewState
 class AdminPresenter : MvpPresenter<AdminView>() {
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.openUserManagerFragment()
+    }
 }

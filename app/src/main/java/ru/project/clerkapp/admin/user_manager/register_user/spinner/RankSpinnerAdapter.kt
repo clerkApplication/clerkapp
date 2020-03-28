@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.rank_spinner.view.*
 import ru.project.clerkapp.R
-import ru.project.clerkapp.utils.Extensions
+import ru.project.clerkapp.utils.Extensions.changeVisibilityState
 
 class RankSpinnerAdapter(
     context: Context,
@@ -27,7 +27,7 @@ class RankSpinnerAdapter(
         val view = LayoutInflater.from(context).inflate(R.layout.rank_spinner, parent, false)
 
         if (position == 0) {
-            Extensions.changeVisibilityState(view.spinnerArrowImageView, true)
+            view.spinnerArrowImageView.changeVisibilityState(true)
             view.spinnerArrowImageView.setImageResource(R.drawable.ic_arrow_up)
             view.rankTextView.setTextColor(
                 ContextCompat.getColor(
@@ -45,7 +45,7 @@ class RankSpinnerAdapter(
     private fun getCustomView(position: Int, parent: ViewGroup): View {
         val view = LayoutInflater.from(context).inflate(R.layout.rank_spinner, parent, false)
 
-        Extensions.changeVisibilityState(view.spinnerArrowImageView, true)
+        view.spinnerArrowImageView.changeVisibilityState(true)
 
         view.rankTextView.text = ranks[position]
 

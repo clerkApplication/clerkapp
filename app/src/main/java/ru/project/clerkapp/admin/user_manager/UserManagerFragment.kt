@@ -8,6 +8,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_user_manager.*
 import ru.project.clerkapp.R
+import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.admin.user_manager.register_user.RegisterUserFragment
 
 class UserManagerFragment : MvpAppCompatFragment(), UserManagerView {
@@ -22,6 +23,12 @@ class UserManagerFragment : MvpAppCompatFragment(), UserManagerView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_user_manager, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AdminActivity).changeArrowBackVisibility(false)
+        (activity as AdminActivity).changeToolbarTitle(resources.getString(R.string.menu))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

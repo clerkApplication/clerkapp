@@ -11,29 +11,28 @@ import ru.project.clerkapp.R
 
 object Extensions {
 
-    fun changeVisibilityState(view: View, state: Boolean) {
-        if (state) {
-            view.visibility = View.VISIBLE
+    fun View.changeVisibilityState(state: Boolean) {
+        visibility = if (state) {
+            View.VISIBLE
         } else {
-            view.visibility = View.GONE
+            View.GONE
         }
     }
 
-    fun setDefaultEditTextWatchers(
+    fun EditText.setDefaultEditTextWatchers(
         context: Context,
-        editText: EditText,
         underline: View
     ) {
         val watcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 s?.let {
                     if (it.isNotBlank()) {
-                        editText.setBackgroundColor(ContextCompat.getColor(context, R.color.activeEditTextBackground))
-                        editText.setTextColor(ContextCompat.getColor(context, R.color.textColor))
+                        setBackgroundColor(ContextCompat.getColor(context, R.color.activeEditTextBackground))
+                        setTextColor(ContextCompat.getColor(context, R.color.textColor))
                         underline.setBackgroundColor(ContextCompat.getColor(context, R.color.activeOrangeColor))
                     } else {
-                        editText.setBackgroundColor(ContextCompat.getColor(context, R.color.inactiveEditTextBackground))
-                        editText.setTextColor(ContextCompat.getColor(context, R.color.darkTextColor))
+                        setBackgroundColor(ContextCompat.getColor(context, R.color.inactiveEditTextBackground))
+                        setTextColor(ContextCompat.getColor(context, R.color.darkTextColor))
                         underline.setBackgroundColor(ContextCompat.getColor(context, R.color.bottomLineColor))
                     }
                 }
@@ -43,7 +42,7 @@ object Extensions {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
-        editText.addTextChangedListener(watcher)
+        addTextChangedListener(watcher)
     }
 
     fun setButtonEnableWatcher(button: Button, vararg editTexts: EditText) {
@@ -62,7 +61,7 @@ object Extensions {
         button.isEnabled = editTexts.all { it.text.isNotEmpty() }
     }
 
-    fun getTextFromEditText(editText: EditText): String {
-        return editText.text.toString()
+    fun EditText.getTextFromEditText(): String {
+        return text.toString()
     }
 }

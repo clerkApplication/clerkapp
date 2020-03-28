@@ -11,6 +11,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_register_user.*
 import ru.project.clerkapp.R
+import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.admin.user_manager.register_user.spinner.RankSpinnerAdapter
 import ru.project.clerkapp.entities.User
 import ru.project.clerkapp.utils.Extensions.getTextFromEditText
@@ -30,6 +31,12 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_register_user, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AdminActivity).changeArrowBackVisibility(true)
+        (activity as AdminActivity).changeToolbarTitle(resources.getString(R.string.user_registration))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,16 +67,16 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
                 getString(R.string.female)
             }
             val user = User(
-                getTextFromEditText(nameEditText),
-                getTextFromEditText(lastNameEditText),
-                getTextFromEditText(patronymicEditText),
-                getTextFromEditText(emailEditText),
+                nameEditText.getTextFromEditText(),
+                lastNameEditText.getTextFromEditText(),
+                patronymicEditText.getTextFromEditText(),
+                emailEditText.getTextFromEditText(),
                 rankSpinner.selectedItem.toString(),
-                getTextFromEditText(phoneEditText).toLong(),
+                emailEditText.getTextFromEditText().toLong(),
                 gender,
-                presenter.dateToTimeStamp(getTextFromEditText(birthdayEditText))
+                presenter.dateToTimeStamp(birthdayEditText.getTextFromEditText())
             )
-            presenter.createNewUser(user, getTextFromEditText(passwordEditText))
+            presenter.createNewUser(user, passwordEditText.getTextFromEditText())
         }
 
         calendarIcon.setOnClickListener {
@@ -96,13 +103,13 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
 
     private fun setWatchers() {
         context?.let {
-            setDefaultEditTextWatchers(it, nameEditText, nameUnderline)
-            setDefaultEditTextWatchers(it, lastNameEditText, lastNameUnderline)
-            setDefaultEditTextWatchers(it, patronymicEditText, patronymicUnderline)
-            setDefaultEditTextWatchers(it, birthdayEditText, birthdayUnderline)
-            setDefaultEditTextWatchers(it, phoneEditText, phoneUnderline)
-            setDefaultEditTextWatchers(it, emailEditText, emailUnderline)
-            setDefaultEditTextWatchers(it, passwordEditText, passwordUnderline)
+            nameEditText.setDefaultEditTextWatchers(it, nameUnderline)
+            lastNameEditText.setDefaultEditTextWatchers(it, lastNameUnderline)
+            patronymicEditText.setDefaultEditTextWatchers(it, patronymicUnderline)
+            birthdayEditText.setDefaultEditTextWatchers(it, birthdayUnderline)
+            phoneEditText.setDefaultEditTextWatchers(it, phoneUnderline)
+            emailEditText.setDefaultEditTextWatchers(it, emailUnderline)
+            passwordEditText.setDefaultEditTextWatchers(it, passwordUnderline)
             setButtonEnableWatcher(
                 createButton,
                 nameEditText,
