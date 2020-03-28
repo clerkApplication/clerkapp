@@ -72,7 +72,7 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
                 patronymicEditText.getTextFromEditText(),
                 emailEditText.getTextFromEditText(),
                 rankSpinner.selectedItem.toString(),
-                emailEditText.getTextFromEditText().toLong(),
+                phoneEditText.getTextFromEditText().toLong(),
                 gender,
                 presenter.dateToTimeStamp(birthdayEditText.getTextFromEditText())
             )

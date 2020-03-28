@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_user_manager.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
+import ru.project.clerkapp.admin.user_manager.change_password.ChangeUserPasswordFragment
 import ru.project.clerkapp.admin.user_manager.register_user.RegisterUserFragment
 
 class UserManagerFragment : MvpAppCompatFragment(), UserManagerView {
@@ -38,14 +40,17 @@ class UserManagerFragment : MvpAppCompatFragment(), UserManagerView {
 
     private fun setListeners() {
         registerUserButton.setOnClickListener {
-            presenter.openRegisterUserScreen()
+            presenter.replaceFragment(RegisterUserFragment())
+        }
+        changeUserPasswordButton.setOnClickListener {
+            presenter.replaceFragment(ChangeUserPasswordFragment())
         }
     }
 
-    override fun openRegisterUserScreen() {
+    override fun openRegisterUserScreen(fragment: Fragment) {
         fragmentManager
             ?.beginTransaction()
-            ?.replace(R.id.container, RegisterUserFragment())
+            ?.replace(R.id.container, fragment)
             ?.addToBackStack(null)
             ?.commit()
     }

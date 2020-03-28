@@ -7,6 +7,7 @@
     <string name="did_not_register">Еще не зарегистрированы или забыли пароль?  Обратитесь к Администратор</string>
     <string name="remove_user">Удаление пользователя</string>
     <string name="change_user_password">Смена пароля пользователя</string>
+    <string name="change_password">Смена пароля</string>
     <string name="user_registration">Регистрация пользователя</string>
     <string name="ready_button">Готово</string>
     <string name="menu">Меню</string>
@@ -22,6 +23,10 @@
     <string name="birthday">Дата рождения</string>
     <string name="phone">Телефон</string>
     <string name="back_arrow">Back arrow</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="change_password_hint">Введите Эл. почту и на нее придёт сообщение для восстановления пароля.</string>
+    <string name="confirm_password">Подтверждение пароля</string>
 
 
     <string-array name="ranks">

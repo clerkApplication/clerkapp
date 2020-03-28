@@ -12,10 +12,10 @@ import ru.project.clerkapp.R
 object Extensions {
 
     fun View.changeVisibilityState(state: Boolean) {
-        visibility = if (state) {
-            View.VISIBLE
+        if (state) {
+            visibility = View.VISIBLE
         } else {
-            View.GONE
+            visibility = View.GONE
         }
     }
 
