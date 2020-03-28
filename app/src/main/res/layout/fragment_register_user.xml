@@ -11,11 +11,249 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/emailContainer"
+            android:id="@+id/rankContainer"
             style="@style/defaultInputContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <Spinner
+                android:id="@+id/rankSpinner"
+                style="@style/registerUserSpinner"
+                android:entries="@array/ranks"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/rankSpinner"
+                app:layout_constraintStart_toStartOf="@id/rankSpinner"
+                app:layout_constraintTop_toBottomOf="@id/rankSpinner" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nameContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rankContainer">
+
+            <EditText
+                android:id="@+id/nameEditText"
+                style="@style/defaultInput"
+                android:hint="@string/name"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,TextFields" />
+
+            <View
+                android:id="@+id/nameUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/nameEditText"
+                app:layout_constraintStart_toStartOf="@id/nameEditText"
+                app:layout_constraintTop_toBottomOf="@id/nameEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lastNameContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameContainer">
+
+            <EditText
+                android:id="@+id/lastNameEditText"
+                style="@style/defaultInput"
+                android:hint="@string/lastName"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor,TextFields" />
+
+            <View
+                android:id="@+id/lastNameUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/lastNameEditText"
+                app:layout_constraintStart_toStartOf="@id/lastNameEditText"
+                app:layout_constraintTop_toBottomOf="@id/lastNameEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/patronymicContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastNameContainer">
+
+            <EditText
+                android:id="@+id/patronymicEditText"
+                style="@style/defaultInput"
+                android:hint="@string/patronymic"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor,TextFields" />
+
+            <View
+                android:id="@+id/patronymicUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/patronymicEditText"
+                app:layout_constraintStart_toStartOf="@id/patronymicEditText"
+                app:layout_constraintTop_toBottomOf="@id/patronymicEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/genderContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/patronymicContainer">
+
+            <TextView
+                android:id="@+id/genderTextView"
+                style="@style/defaultText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/genderRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/genderTextView"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/maleRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:checked="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/genderTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/maleTextView"
+                    style="@style/defaultText"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/male"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/maleRadioButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioButton
+                    android:id="@+id/femaleRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/femaleTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/femaleTextView"
+                    style="@style/defaultText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/female"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/birthdayContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderContainer">
+
+            <EditText
+                android:id="@+id/birthdayEditText"
+                style="@style/defaultInput"
+                android:layout_marginEnd="42dp"
+                android:hint="@string/birthday"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@id/calendarIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor,TextFields" />
+
+            <ImageView
+                android:id="@+id/calendarIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:src="@drawable/calendar_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <View
+                android:id="@+id/birthdayUnderline"
+                style="@style/defaultInputBottomLine"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="@id/birthdayEditText"
+                app:layout_constraintStart_toStartOf="@id/birthdayEditText"
+                app:layout_constraintTop_toBottomOf="@id/birthdayEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phoneContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/birthdayContainer">
+
+            <EditText
+                android:id="@+id/phoneEditText"
+                style="@style/defaultInput"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor,TextFields" />
+
+            <View
+                android:id="@+id/phoneUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/phoneEditText"
+                app:layout_constraintStart_toStartOf="@id/phoneEditText"
+                app:layout_constraintTop_toBottomOf="@id/phoneEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/emailContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneContainer">
 
             <EditText
                 android:id="@+id/emailEditText"
@@ -25,9 +263,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="Autofill,TextFields" />
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
             <View
+                android:id="@+id/emailUnderline"
                 style="@style/defaultInputBottomLine"
                 app:layout_constraintEnd_toEndOf="@id/emailEditText"
                 app:layout_constraintStart_toStartOf="@id/emailEditText"
@@ -53,6 +292,7 @@
                 tools:ignore="Autofill,LabelFor,TextFields" />
 
             <View
+                android:id="@+id/passwordUnderline"
                 style="@style/defaultInputBottomLine"
                 app:layout_constraintEnd_toEndOf="@id/passwordEditText"
                 app:layout_constraintStart_toStartOf="@id/passwordEditText"
@@ -64,7 +304,8 @@
             android:id="@+id/createButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/orangeColor"
+            android:background="@drawable/orange_button_background"
+            android:enabled="false"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/ready_button"
             android:textAllCaps="false"
@@ -73,5 +314,4 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>

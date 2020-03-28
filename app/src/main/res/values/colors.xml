@@ -12,9 +12,16 @@
     <color name="veryLowTransparentWhiteColor">#10FFFFFF</color>
     
     <color name="inactiveEditTextBackground">#204d4d80</color>
+    <color name="activeEditTextBackground">#f4f5f8</color>
 
-    <color name="textColor">#614A547E</color>
+    <color name="spinnerBackground">#E2E8F9</color>
+
+    <color name="darkTextColor">#614A547E</color>
+    <color name="textColor">#4A547E</color>
     <color name="bottomLineColor">#804A547E</color>
 
-    <color name="orangeColor">#FF9B3F</color>
+    <color name="inactiveViewColor">#A5AABF</color>
+
+    <color name="activeOrangeColor">#FF9B3F</color>
+    <color name="inactiveOrangeColor">#FFCD9F</color>
 </resources>

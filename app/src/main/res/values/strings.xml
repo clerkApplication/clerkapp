@@ -8,6 +8,23 @@
     <string name="remove_user">Удаление пользователя</string>
     <string name="change_user_password">Смена пароля пользователя</string>
     <string name="user_registration">Регистрация пользователя</string>
-    <string name="email">Эл. почта</string>
     <string name="ready_button">Готово</string>
+
+    <string name="name">Имя</string>
+    <string name="lastName">Фамилия</string>
+    <string name="email">Эл. почта</string>
+    <string name="rank">Должность</string>
+    <string name="patronymic">Отчество</string>
+    <string name="gender">Пол:</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="phone">Телефон</string>
+
+
+    <string-array name="ranks">
+        <item>Должность</item>
+        <item>Работник</item>
+        <item>Начальник</item>
+    </string-array>
 </resources>

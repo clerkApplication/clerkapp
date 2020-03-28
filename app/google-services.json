@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "693090920424",
-    "firebase_url": "https://clerkapp-1f54a.firebaseio.com",
-    "project_id": "clerkapp-1f54a",
-    "storage_bucket": "clerkapp-1f54a.appspot.com"
+    "project_number": "862789105023",
+    "firebase_url": "https://clerkapp-bd02e.firebaseio.com",
+    "project_id": "clerkapp-bd02e",
+    "storage_bucket": "clerkapp-bd02e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:693090920424:android:a3554e30023c8c54dfe65d",
+        "mobilesdk_app_id": "1:862789105023:android:d88b490d29ad8b3edb164a",
         "android_client_info": {
           "package_name": "ru.project.clerkapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "693090920424-rvhqncnrc9dhim4rt7u46n766mvqn0mi.apps.googleusercontent.com",
+          "client_id": "862789105023-cssg8iovb1fdqi2uuo0krct90774hc89.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAN-xbtnxoIH3eNzbR0behbGLOAVr4j4Ww"
+          "current_key": "AIzaSyD7KcJWlQkP6a-zqRwhGUQv3OzNhO28DbQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "693090920424-rvhqncnrc9dhim4rt7u46n766mvqn0mi.apps.googleusercontent.com",
+              "client_id": "862789105023-cssg8iovb1fdqi2uuo0krct90774hc89.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
