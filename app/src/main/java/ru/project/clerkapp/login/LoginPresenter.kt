@@ -3,8 +3,12 @@ package ru.project.clerkapp.login
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import ru.project.clerkapp.entities.User
+import ru.project.clerkapp.realm.user.UserGateway
 import ru.project.clerkapp.utils.Constants.ADMIN
 import ru.project.clerkapp.utils.Constants.ADMIN_UID
+import ru.project.clerkapp.utils.Constants.USERS
 
 @InjectViewState
 class LoginPresenter : MvpPresenter<LoginView>() {
@@ -20,12 +24,24 @@ class LoginPresenter : MvpPresenter<LoginView>() {
         } else {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    viewState.openMainActivity()
+                    saveUserFromCloudFirestore(it.user!!.uid)
                 }
                 .addOnFailureListener {
                     viewState.showToast(it.message.toString())
                 }
         }
+    }
+
+    private fun saveUserFromCloudFirestore(uid: String) {
+        val cloudDatabase = FirebaseFirestore.getInstance()
+        cloudDatabase.collection(USERS).document(uid).get()
+            .addOnSuccessListener {
+                UserGateway.saveUser(User.mapToObject(it.data as HashMap<String, Any>))
+                viewState.openMainActivity()
+            }
+            .addOnFailureListener {
+                viewState.showToast(it.message.toString())
+            }
     }
 
     private fun checkIsUserSignedIn() {

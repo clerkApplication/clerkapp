@@ -9,4 +9,40 @@ data class User(
     val phone: Long,
     val gender: String,
     val birthday: Long
-)
+) {
+
+    companion object {
+        fun mapToObject(map: HashMap<String, Any>): User {
+            return User(
+                name = map["name"] as String,
+                lastName = map["lastName"] as String,
+                patronymic = map["patronymic"] as String,
+                email = map["email"] as String,
+                rank = map["rank"] as String,
+                phone = map["phone"] as Long,
+                gender = map["gender"] as String,
+                birthday = map["birthday"] as Long
+            )
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
