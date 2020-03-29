@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.main.MainActivity
+import ru.project.clerkapp.utils.Extensions.getTextFromEditText
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 
@@ -55,16 +56,16 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
     private fun setListeners() {
         enterButton.setOnClickListener {
-            val email = loginEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val email = emailEditText.getTextFromEditText()
+            val password = passwordEditText.getTextFromEditText()
             presenter.signIn(email, password)
         }
     }
 
     private fun handleEditTextsChangeListener() {
-        loginEditText.addTextChangedListener(object : TextWatcher {
+        emailEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(newText: Editable?) {
-                changeContainerStyle(newText.toString(), loginEditText, loginIcon)
+                changeContainerStyle(newText.toString(), emailEditText, emailIcon)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
