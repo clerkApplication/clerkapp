@@ -3,6 +3,8 @@ package ru.project.clerkapp.login
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
+import ru.project.clerkapp.utils.Constants.ADMIN
+import ru.project.clerkapp.utils.Constants.ADMIN_UID
 
 @InjectViewState
 class LoginPresenter : MvpPresenter<LoginView>() {
@@ -13,7 +15,7 @@ class LoginPresenter : MvpPresenter<LoginView>() {
     }
 
     fun signIn(email: String, password: String) {
-        if (email == "admin" && password == "admin") {
+        if (email == ADMIN && password == ADMIN) {
             viewState.openAdminActivity()
         } else {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -28,7 +30,7 @@ class LoginPresenter : MvpPresenter<LoginView>() {
 
     private fun checkIsUserSignedIn() {
         val user = FirebaseAuth.getInstance().currentUser
-        if (user != null && user.uid != "admin") {
+        if (user != null && user.uid != ADMIN_UID) {
             viewState.openMainActivity()
         }
     }

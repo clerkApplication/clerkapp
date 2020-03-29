@@ -28,7 +28,7 @@ object Extensions {
                 s?.let {
                     if (it.isNotBlank()) {
                         setBackgroundColor(ContextCompat.getColor(context, R.color.activeEditTextBackground))
-                        setTextColor(ContextCompat.getColor(context, R.color.textColor))
+                        setTextColor(ContextCompat.getColor(context, R.color.defaultTextColor))
                         underline.setBackgroundColor(ContextCompat.getColor(context, R.color.activeOrangeColor))
                     } else {
                         setBackgroundColor(ContextCompat.getColor(context, R.color.inactiveEditTextBackground))

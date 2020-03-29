@@ -38,26 +38,28 @@
         app:layout_constraintTop_toBottomOf="@id/enterTextView">
 
         <ImageView
-            android:id="@+id/loginIcon"
+            android:id="@+id/emailIcon"
             style="@style/loginIcon"
             android:background="@color/strongTransparentWhiteColor"
-            android:src="@drawable/login_icon"
+            android:src="@drawable/ic_email"
+            android:padding="12dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <EditText
-            android:id="@+id/loginEditText"
+            android:id="@+id/emailEditText"
             style="@style/loginEditText"
             android:background="@color/lowTransparentWhiteColor"
-            android:hint="@string/login"
+            android:hint="@string/email"
             android:inputType="textVisiblePassword"
             android:textSize="18sp"
-            android:text="admin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/loginIcon"
+            app:layout_constraintStart_toEndOf="@id/emailIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="Autofill,TextFields" />
 
@@ -83,7 +85,7 @@
             android:id="@+id/passwordIcon"
             style="@style/loginIcon"
             android:background="@color/strongTransparentWhiteColor"
-            android:src="@drawable/password_icon"
+            android:src="@drawable/ic_password"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -96,7 +98,6 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="18sp"
-            android:text="admin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/passwordIcon"
