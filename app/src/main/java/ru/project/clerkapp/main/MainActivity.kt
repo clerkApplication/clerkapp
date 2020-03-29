@@ -28,6 +28,21 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         backArrow.changeVisibilityState(false)
     }
 
+    override fun openFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
+
+    fun changeArrowBackVisibility(state: Boolean) {
+        backArrow.changeVisibilityState(state)
+    }
+
+    fun changeToolbarTitle(title: String) {
+        toolbarTitle.text = title
+    }
+
     private fun setupBottomNavigationView() {
         bottomNavigation.selectedItemId = R.id.action_task
         bottomNavigation.setOnNavigationItemReselectedListener {
@@ -51,12 +66,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         taskLine.visibility = View.INVISIBLE
         profileLine.visibility = View.INVISIBLE
         chosenLine.changeVisibilityState(true)
-    }
-
-    override fun openFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, fragment)
-            .commit()
     }
 }

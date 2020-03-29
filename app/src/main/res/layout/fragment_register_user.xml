@@ -193,7 +193,6 @@
             <EditText
                 android:id="@+id/birthdayEditText"
                 style="@style/defaultInput"
-                android:layout_marginEnd="42dp"
                 android:hint="@string/birthday"
                 android:inputType="date"
                 android:enabled="false"
@@ -207,6 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
+                android:layout_marginEnd="6dp"
                 android:src="@drawable/ic_calendar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

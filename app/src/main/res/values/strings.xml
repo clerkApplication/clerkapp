@@ -12,6 +12,7 @@
     <string name="ready_button">Готово</string>
     <string name="menu">Меню</string>
 
+
     <string name="name">Имя</string>
     <string name="lastName">Фамилия</string>
     <string name="email">Эл. почта</string>
@@ -30,8 +31,13 @@
 
     <string name="chat">Чат</string>
     <string name="tasks">Задачи</string>
+    <string name="task">Задача</string>
     <string name="profile">Профиль</string>
     <string name="close">Close</string>
+    <string name="title_input">Тема/заголовок</string>
+    <string name="deadLine">Срок выполнения</string>
+    <string name="performers_list">Список исполнителей</string>
+    <string name="description">Описание</string>
 
 
     <string-array name="ranks">

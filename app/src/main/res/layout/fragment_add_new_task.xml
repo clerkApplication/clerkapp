@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleContainer"
+        style="@style/defaultInputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            style="@style/defaultInput"
+            android:hint="@string/title_input"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <View
+            android:id="@+id/phoneUnderline"
+            style="@style/defaultInputBottomLine"
+            app:layout_constraintEnd_toEndOf="@id/titleEditText"
+            app:layout_constraintStart_toStartOf="@id/titleEditText"
+            app:layout_constraintTop_toBottomOf="@id/titleEditText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deadLineContainer"
+        style="@style/defaultInputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleContainer">
+
+        <EditText
+            android:id="@+id/deadLineEditText"
+            style="@style/defaultInput"
+            android:enabled="false"
+            android:hint="@string/deadLine"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="@id/calendarIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <ImageView
+            android:id="@+id/calendarIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_calendar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/birthdayUnderline"
+            style="@style/defaultInputBottomLine"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="@id/deadLineEditText"
+            app:layout_constraintStart_toStartOf="@id/deadLineEditText"
+            app:layout_constraintTop_toBottomOf="@id/deadLineEditText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/performersListContainer"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/white"
+        android:elevation="3dp"
+        android:outlineProvider="bounds"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deadLineContainer">
+
+        <TextView
+            style="@style/defaultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performers_list"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/performers_list"
+            android:src="@drawable/ic_blue_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/performersRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@id/performersListContainer"
+        app:layout_constraintStart_toStartOf="@id/performersListContainer"
+        app:layout_constraintTop_toBottomOf="@id/performersListContainer" />
+
+    <EditText
+        android:id="@+id/taskDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/new_task_edit_text_background"
+        android:gravity="start"
+        android:hint="@string/description"
+        android:inputType="text"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@id/createButton"
+        app:layout_constraintEnd_toEndOf="@id/performersListContainer"
+        app:layout_constraintStart_toStartOf="@id/performersListContainer"
+        app:layout_constraintTop_toBottomOf="@id/performersRecyclerView"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/orange_button_background"
+        android:enabled="false"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/ready_button"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
