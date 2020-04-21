@@ -1,13 +1,20 @@
 package ru.project.clerkapp.main.tasks.recycler_view
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_task.view.*
 import ru.project.clerkapp.R
-import ru.project.clerkapp.entities.Task
+import ru.project.clerkapp.entities.*
+import ru.project.clerkapp.utils.Constants.WORKER
+import ru.project.clerkapp.utils.DateUtils.timeStampToDate
 
-class TasksAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
+class TasksAdapter(
+    private val tasks: List<Task>,
+    private val rank: String
+) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         return TasksViewHolder(
@@ -25,9 +32,40 @@ class TasksAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TasksAd
 
     inner class TasksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(task: Task) {
             with(itemView) {
+                taskTitle.text = task.title
+                taskDescription.text = task.description
+                taskDeadLine.text = "Срок: ${task.date.timeStampToDate()}"
+                taskStatus.text = task.status.getStringFromStatus()
 
+                if (rank == WORKER) {
+                    taskCloseImageView.visibility = View.INVISIBLE
+                }
+            }
+        }
+
+        private fun TaskStatus.bindStatus() {
+            when (this) {
+                ToPerform -> {
+
+                }
+                InProgress -> {
+
+                }
+                Returned -> {
+
+                }
+                Checking -> {
+
+                }
+                SentToCheck -> {
+
+                }
+                Completed -> {
+
+                }
             }
         }
     }

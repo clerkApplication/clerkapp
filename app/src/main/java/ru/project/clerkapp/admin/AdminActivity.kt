@@ -6,7 +6,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.user_manager.UserManagerFragment
-import ru.project.clerkapp.utils.Extensions.changeVisibilityState
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class AdminActivity : MvpAppCompatActivity(), AdminView {
 

@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.main.tasks.TasksFragment
-import ru.project.clerkapp.utils.Extensions.changeVisibilityState
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
@@ -21,6 +21,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupBottomNavigationView()
+        setListeners()
     }
 
     override fun onResume() {
@@ -39,8 +40,19 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         backArrow.changeVisibilityState(state)
     }
 
+    fun changeLoadingState(state: Boolean) {
+        progressBar.changeVisibilityState(state)
+        container.changeVisibilityState(!state)
+    }
+
     fun changeToolbarTitle(title: String) {
         toolbarTitle.text = title
+    }
+
+    private fun setListeners() {
+        backArrow.setOnClickListener {
+            supportFragmentManager.popBackStack()
+        }
     }
 
     private fun setupBottomNavigationView() {

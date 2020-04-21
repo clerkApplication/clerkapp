@@ -14,9 +14,9 @@ import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.admin.user_manager.register_user.spinner.RankSpinnerAdapter
 import ru.project.clerkapp.entities.User
-import ru.project.clerkapp.utils.Extensions.getTextFromEditText
-import ru.project.clerkapp.utils.Extensions.setButtonEnableWatcher
-import ru.project.clerkapp.utils.Extensions.setDefaultEditTextWatchers
+import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
+import ru.project.clerkapp.utils.EditTextUtils.setButtonEnableWatcher
+import ru.project.clerkapp.utils.EditTextUtils.setDefaultEditTextWatcher
 import java.util.*
 
 class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
@@ -79,7 +79,7 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
             presenter.createNewUser(user, passwordEditText.getTextFromEditText())
         }
 
-        calendarIcon.setOnClickListener {
+        birthdayContainer.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
@@ -89,10 +89,7 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
             DatePickerDialog(
                 context!!, DatePickerDialog.OnDateSetListener { _, currentYear, monthOfYear, dayOfMonth ->
                     birthdayEditText.setText("$dayOfMonth.$monthOfYear.$currentYear")
-                },
-                year,
-                month,
-                day
+                }, year, month, day
             ).show()
         }
     }
@@ -102,24 +99,22 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
     }
 
     private fun setWatchers() {
-        context?.let {
-            nameEditText.setDefaultEditTextWatchers(it, nameUnderline)
-            lastNameEditText.setDefaultEditTextWatchers(it, lastNameUnderline)
-            patronymicEditText.setDefaultEditTextWatchers(it, patronymicUnderline)
-            birthdayEditText.setDefaultEditTextWatchers(it, birthdayUnderline)
-            phoneEditText.setDefaultEditTextWatchers(it, phoneUnderline)
-            emailEditText.setDefaultEditTextWatchers(it, emailUnderline)
-            passwordEditText.setDefaultEditTextWatchers(it, passwordUnderline)
-            setButtonEnableWatcher(
-                createButton,
-                nameEditText,
-                lastNameEditText,
-                patronymicEditText,
-                birthdayEditText,
-                phoneEditText,
-                emailEditText,
-                passwordEditText
-            )
-        }
+        nameEditText.setDefaultEditTextWatcher(nameUnderline)
+        lastNameEditText.setDefaultEditTextWatcher(lastNameUnderline)
+        patronymicEditText.setDefaultEditTextWatcher(patronymicUnderline)
+        birthdayEditText.setDefaultEditTextWatcher(birthdayUnderline)
+        phoneEditText.setDefaultEditTextWatcher(phoneUnderline)
+        emailEditText.setDefaultEditTextWatcher(emailUnderline)
+        passwordEditText.setDefaultEditTextWatcher(passwordUnderline)
+        setButtonEnableWatcher(
+            createButton,
+            nameEditText,
+            lastNameEditText,
+            patronymicEditText,
+            birthdayEditText,
+            phoneEditText,
+            emailEditText,
+            passwordEditText
+        )
     }
 }

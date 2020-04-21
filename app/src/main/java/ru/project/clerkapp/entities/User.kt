@@ -1,5 +1,9 @@
 package ru.project.clerkapp.entities
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
     val name: String,
     val lastName: String,
@@ -9,7 +13,7 @@ data class User(
     val phone: Long,
     val gender: String,
     val birthday: Long
-) {
+) : Parcelable {
 
     companion object {
         fun mapToObject(map: HashMap<String, Any>): User {

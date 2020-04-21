@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.main.MainActivity
-import ru.project.clerkapp.utils.Extensions.getTextFromEditText
+import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 

@@ -1,12 +1,12 @@
 package ru.project.clerkapp.main.tasks.add_new_task
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
+import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.project.clerkapp.entities.User
+import ru.project.clerkapp.main.base.BaseLoadingView
 
-interface AddNewTaskView : MvpView {
+interface AddNewTaskView : BaseLoadingView {
 
-    @StateStrategyType(OneExecutionStateStrategy::class)
+    @StateStrategyType(AddToEndSingleStrategy::class)
     fun initRecyclerView(users: List<User>)
 }

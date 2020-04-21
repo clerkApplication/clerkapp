@@ -10,9 +10,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_change_user_password.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
-import ru.project.clerkapp.utils.Extensions.getTextFromEditText
-import ru.project.clerkapp.utils.Extensions.setButtonEnableWatcher
-import ru.project.clerkapp.utils.Extensions.setDefaultEditTextWatchers
+import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
+import ru.project.clerkapp.utils.EditTextUtils.setButtonEnableWatcher
+import ru.project.clerkapp.utils.EditTextUtils.setDefaultEditTextWatcher
 
 class ChangeUserPasswordFragment : MvpAppCompatFragment(), ChangeUserPasswordView {
 
@@ -58,7 +58,7 @@ class ChangeUserPasswordFragment : MvpAppCompatFragment(), ChangeUserPasswordVie
 
     private fun setWatchers() {
         context?.let {
-            emailEditText.setDefaultEditTextWatchers(it, emailUnderline)
+            emailEditText.setDefaultEditTextWatcher(emailUnderline)
             setButtonEnableWatcher(
                 changeUserPasswordButton,
                 emailEditText

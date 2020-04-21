@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.rank_spinner.view.*
 import ru.project.clerkapp.R
-import ru.project.clerkapp.utils.Extensions.changeVisibilityState
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class RankSpinnerAdapter(
     context: Context,

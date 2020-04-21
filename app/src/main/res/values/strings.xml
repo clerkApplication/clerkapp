@@ -38,6 +38,7 @@
     <string name="deadLine">Срок выполнения</string>
     <string name="performers_list">Список исполнителей</string>
     <string name="description">Описание</string>
+    <string name="performer">Исполнитель</string>
 
 
     <string-array name="ranks">
