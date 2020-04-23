@@ -17,31 +17,60 @@ class TasksPresenter : BaseLoadingPresenter<TasksView>() {
 
     private lateinit var user: User
     private val tasks = ArrayList<Task>()
+    private val cloudDatabase = FirebaseFirestore.getInstance()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         user = UserGateway.getCurrentUser()
         hideFloatingActionButton()
-        loadTasks()
     }
 
     fun openFragment(fragment: Fragment) {
         viewState.openFragment(fragment)
     }
 
-    private fun loadTasks() {
+    fun isRoleWorker(): Boolean = user.rank == WORKER
+
+    fun loadTasksDependOnRole() {
+        tasks.clear()
+        viewState.changeLoadingState(true)
         val searchingParameter = getSearchingParameter()
-        val cloudDatabase = FirebaseFirestore.getInstance()
+        if (isRoleWorker()) {
+            loadTasksForWorker(searchingParameter)
+        } else {
+            loadTasksForSuperior(searchingParameter)
+        }
+    }
+
+    private fun loadTasksForSuperior(searchingParameter: String) {
+        cloudDatabase.collection(TASKS).whereEqualTo(searchingParameter, user.email).get()
+            .addOnSuccessListener { response ->
+                response.documents.forEach { document ->
+                    tasks.add(Task.mapToObject(document.data as HashMap<String, Any>))
+                }
+                viewState.initRecyclerView(tasks, user.rank)
+            }
+            .addOnFailureListener {
+                viewState.showToast(it.message.toString())
+            }
+            .addOnCompleteListener {
+                viewState.changeLoadingState(false)
+            }
+    }
+
+    private fun loadTasksForWorker(searchingParameter: String) {
         cloudDatabase.collection(TASKS).whereArrayContains(searchingParameter, user.email).get()
             .addOnSuccessListener { response ->
                 response.documents.forEach { document ->
                     tasks.add(Task.mapToObject(document.data as HashMap<String, Any>))
                 }
                 viewState.initRecyclerView(tasks, user.rank)
-                viewState.changeLoadingState(false)
             }
             .addOnFailureListener {
                 viewState.showToast(it.message.toString())
+            }
+            .addOnCompleteListener {
+                viewState.changeLoadingState(false)
             }
     }
 

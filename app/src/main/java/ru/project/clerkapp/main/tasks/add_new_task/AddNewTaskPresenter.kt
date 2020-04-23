@@ -24,7 +24,7 @@ class AddNewTaskPresenter : BaseLoadingPresenter<AddNewTaskView>() {
     fun createNewTask(task: Task) {
         val cloudDatabase = FirebaseFirestore.getInstance()
         val taskHashMap = Task.objectToHashMap(task)
-        cloudDatabase.collection(TASKS).document().set(taskHashMap)
+        cloudDatabase.collection(TASKS).document(task.id).set(taskHashMap)
             .addOnSuccessListener {
                 viewState.showToast("Задача была отправлена")
                 viewState.returnToPreviousFragment()

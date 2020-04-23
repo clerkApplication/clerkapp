@@ -13,8 +13,14 @@ import ru.project.clerkapp.utils.DateUtils.timeStampToDate
 
 class TasksAdapter(
     private val tasks: List<Task>,
-    private val rank: String
+    private val rank: String,
+    private val listener: Listener
 ) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
+
+    interface Listener {
+        fun openTask(task: Task)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         return TasksViewHolder(
@@ -31,6 +37,12 @@ class TasksAdapter(
     }
 
     inner class TasksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.setOnClickListener {
+                listener.openTask(tasks[adapterPosition])
+            }
+        }
 
         @SuppressLint("SetTextI18n")
         fun bind(task: Task) {

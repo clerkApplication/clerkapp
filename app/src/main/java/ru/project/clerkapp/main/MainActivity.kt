@@ -8,6 +8,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
+import ru.project.clerkapp.main.chat.ChatFragment
+import ru.project.clerkapp.main.profile.ProfileFragment
 import ru.project.clerkapp.main.tasks.TasksFragment
 import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
@@ -57,18 +59,24 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     private fun setupBottomNavigationView() {
         bottomNavigation.selectedItemId = R.id.action_task
-        bottomNavigation.setOnNavigationItemReselectedListener {
+        bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_chat -> {
                     changeBottomNavigationLineVisibility(chatLine)
+                    presenter.openFragment(ChatFragment())
+                    true
                 }
                 R.id.action_task -> {
                     changeBottomNavigationLineVisibility(taskLine)
                     presenter.openFragment(TasksFragment())
+                    true
                 }
                 R.id.action_profile -> {
                     changeBottomNavigationLineVisibility(profileLine)
+                    presenter.openFragment(ProfileFragment())
+                    true
                 }
+                else -> false
             }
         }
     }

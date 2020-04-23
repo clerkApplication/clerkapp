@@ -36,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:orientation="horizontal"
-        android:visibility="gone"
         android:weightSum="3"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"

@@ -20,6 +20,8 @@
     <color name="defaultTextColor">#4A547E</color>
     <color name="bottomLineColor">#804A547E</color>
 
+    <color name="rejectButtonColor">#424B72</color>
+
     <color name="greyTextColor">#A5AABF</color>
 
     <color name="inactiveViewColor">#A5AABF</color>

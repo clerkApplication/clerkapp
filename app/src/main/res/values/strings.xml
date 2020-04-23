@@ -39,6 +39,11 @@
     <string name="performers_list">Список исполнителей</string>
     <string name="description">Описание</string>
     <string name="performer">Исполнитель</string>
+    <string name="in_developing">Ещё в разработке.</string>
+    <string name="send_to_check">Отправить на проверку</string>
+
+    <string name="accept">Принять</string>
+    <string name="reject">Отклонить</string>
 
 
     <string-array name="ranks">

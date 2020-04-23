@@ -90,6 +90,7 @@ class AddNewTaskFragment : BaseLoadingFragment(), AddNewTaskView {
 
         createButton.setOnClickListener {
             val task = Task(
+                id = Task.generateIdByCurrentMillis(),
                 title = titleEditText.getTextFromEditText(),
                 description = taskDescriptionEditText.getTextFromEditText(),
                 status = ToPerform,

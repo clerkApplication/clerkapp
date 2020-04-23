@@ -14,6 +14,9 @@ import ru.project.clerkapp.main.MainActivity
 import ru.project.clerkapp.main.base.BaseLoadingFragment
 import ru.project.clerkapp.main.tasks.add_new_task.AddNewTaskFragment
 import ru.project.clerkapp.main.tasks.recycler_view.TasksAdapter
+import ru.project.clerkapp.main.tasks.task.TaskFragment
+import ru.project.clerkapp.utils.Constants.TASK
+import ru.project.clerkapp.utils.Constants.WORKER
 
 class TasksFragment : BaseLoadingFragment(), TasksView {
 
@@ -36,6 +39,7 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
 
     override fun onResume() {
         super.onResume()
+        presenter.loadTasksDependOnRole()
         (activity as MainActivity).changeToolbarTitle(resources.getString(R.string.tasks))
         (activity as MainActivity).changeArrowBackVisibility(false)
     }
@@ -46,7 +50,16 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
 
     override fun initRecyclerView(tasks: List<Task>, rank: String) {
         tasksRecyclerView.layoutManager = LinearLayoutManager(activity!!)
-        tasksRecyclerView.adapter = TasksAdapter(tasks, rank)
+        tasksRecyclerView.adapter = TasksAdapter(tasks, rank, object: TasksAdapter.Listener {
+            override fun openTask(task: Task) {
+                val bundle = Bundle()
+                val fragment = TaskFragment()
+                bundle.putSerializable(TASK, task)
+                bundle.putBoolean(WORKER, presenter.isRoleWorker())
+                fragment.arguments = bundle
+                openFragment(fragment)
+            }
+        })
     }
 
     override fun openFragment(fragment: Fragment) {
