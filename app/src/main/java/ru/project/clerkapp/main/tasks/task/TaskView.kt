@@ -1,6 +1,7 @@
 package ru.project.clerkapp.main.tasks.task
 
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.project.clerkapp.main.base.BaseLoadingView
 

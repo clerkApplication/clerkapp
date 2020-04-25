@@ -32,6 +32,7 @@
     <string name="chat">Чат</string>
     <string name="tasks">Задачи</string>
     <string name="task">Задача</string>
+    <string name="new_task">Новая задача</string>
     <string name="profile">Профиль</string>
     <string name="close">Close</string>
     <string name="title_input">Тема/заголовок</string>
@@ -44,6 +45,8 @@
 
     <string name="accept">Принять</string>
     <string name="reject">Отклонить</string>
+    <string name="empty_query">Пустой запрос</string>
+    <string name="there_are_not_items">Ничего не найдено</string>
 
 
     <string-array name="ranks">

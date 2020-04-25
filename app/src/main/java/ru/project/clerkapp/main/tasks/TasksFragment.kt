@@ -17,6 +17,7 @@ import ru.project.clerkapp.main.tasks.recycler_view.TasksAdapter
 import ru.project.clerkapp.main.tasks.task.TaskFragment
 import ru.project.clerkapp.utils.Constants.TASK
 import ru.project.clerkapp.utils.Constants.WORKER
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class TasksFragment : BaseLoadingFragment(), TasksView {
 
@@ -37,6 +38,11 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
         setListeners()
     }
 
+    override fun changeLoadingState(state: Boolean) {
+        super.changeLoadingState(state)
+        swipeRefreshLayout.isRefreshing = false
+    }
+
     override fun onResume() {
         super.onResume()
         presenter.loadTasksDependOnRole()
@@ -50,7 +56,7 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
 
     override fun initRecyclerView(tasks: List<Task>, rank: String) {
         tasksRecyclerView.layoutManager = LinearLayoutManager(activity!!)
-        tasksRecyclerView.adapter = TasksAdapter(tasks, rank, object: TasksAdapter.Listener {
+        tasksRecyclerView.adapter = TasksAdapter(tasks, rank, object : TasksAdapter.Listener {
             override fun openTask(task: Task) {
                 val bundle = Bundle()
                 val fragment = TaskFragment()
@@ -59,7 +65,19 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
                 fragment.arguments = bundle
                 openFragment(fragment)
             }
+
+            override fun removeTask(task: Task) {
+                presenter.removeTask(task)
+            }
         })
+    }
+
+    override fun changeStateOfEmptyQueryLayout(state: Boolean) {
+        emptyQueryLayout.changeVisibilityState(state)
+    }
+
+    override fun updateAdapter() {
+        tasksRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun openFragment(fragment: Fragment) {
@@ -73,6 +91,10 @@ class TasksFragment : BaseLoadingFragment(), TasksView {
     private fun setListeners() {
         addNewTask.setOnClickListener {
             presenter.openFragment(AddNewTaskFragment())
+        }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            presenter.loadTasksDependOnRole()
         }
     }
 }

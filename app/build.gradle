@@ -48,4 +48,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore:18.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:21.4.1'
+
+    // SwipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 }

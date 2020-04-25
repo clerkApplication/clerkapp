@@ -24,11 +24,11 @@ import ru.project.clerkapp.main.base.BaseLoadingFragment
 import ru.project.clerkapp.main.tasks.add_new_task.add_performer.AddPerformerFragment
 import ru.project.clerkapp.main.tasks.add_new_task.recycler_view.AddNewTaskAdapter
 import ru.project.clerkapp.utils.Constants
+import ru.project.clerkapp.utils.DateUtils.dateToTimeStamp
 import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
 import ru.project.clerkapp.utils.EditTextUtils.setButtonEnableWatcher
 import ru.project.clerkapp.utils.EditTextUtils.setDefaultEditTextWatcher
 import ru.project.clerkapp.utils.EditTextUtils.setEditTextWithoutUnderlineWatcher
-import ru.project.clerkapp.utils.DateUtils.dateToTimeStamp
 import java.util.*
 
 class AddNewTaskFragment : BaseLoadingFragment(), AddNewTaskView {
@@ -49,11 +49,11 @@ class AddNewTaskFragment : BaseLoadingFragment(), AddNewTaskView {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).changeToolbarTitle(resources.getString(R.string.task))
+        (activity as MainActivity).changeToolbarTitle(resources.getString(R.string.new_task))
         (activity as MainActivity).changeArrowBackVisibility(true)
     }
 
-    override fun initRecyclerView(users: List<User>) {
+    override fun initRecyclerView(users: ArrayList<User>) {
         performersRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         performersRecyclerView.adapter = AddNewTaskAdapter(users)
     }

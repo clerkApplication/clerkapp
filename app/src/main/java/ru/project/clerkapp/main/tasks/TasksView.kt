@@ -13,4 +13,10 @@ interface TasksView : BaseLoadingView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun initRecyclerView(tasks: List<Task>, rank: String)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun updateAdapter()
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun changeStateOfEmptyQueryLayout(state: Boolean)
 }

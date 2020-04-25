@@ -21,10 +21,10 @@
         android:maxLines="1"
         android:text="Ержан вставай наgjsdfjsdjsdbgjsdbgjsgbsjdg работу пора"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/taskCloseImageView"
-        app:layout_constraintEnd_toStartOf="@id/taskCloseImageView"
+        app:layout_constraintBottom_toBottomOf="@id/taskRemoveImageView"
+        app:layout_constraintEnd_toStartOf="@id/taskRemoveImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/taskCloseImageView" />
+        app:layout_constraintTop_toTopOf="@id/taskRemoveImageView" />
 
     <TextView
         android:id="@+id/taskDescription"
@@ -36,7 +36,7 @@
         android:text="Очень длинное описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание "
         android:textColor="@color/greyTextColor"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/taskCloseImageView"
+        app:layout_constraintEnd_toEndOf="@id/taskRemoveImageView"
         app:layout_constraintStart_toStartOf="@id/taskTitle"
         app:layout_constraintTop_toBottomOf="@id/taskTitle" />
 
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/taskDescription" />
 
     <ImageView
-        android:id="@+id/taskCloseImageView"
+        android:id="@+id/taskRemoveImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/close"

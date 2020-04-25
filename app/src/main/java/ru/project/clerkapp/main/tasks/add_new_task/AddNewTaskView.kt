@@ -8,5 +8,5 @@ import ru.project.clerkapp.main.base.BaseLoadingView
 interface AddNewTaskView : BaseLoadingView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun initRecyclerView(users: List<User>)
+    fun initRecyclerView(users: ArrayList<User>)
 }

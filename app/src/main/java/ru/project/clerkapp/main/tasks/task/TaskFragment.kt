@@ -33,7 +33,7 @@ class TaskFragment : BaseLoadingFragment(), TaskView {
         task = arguments?.getSerializable(TASK) as Task
         isRoleWorker = arguments?.getBoolean(Constants.WORKER) ?: false
         changeButtonIfNotWorker()
-        presenter.initContent(task.id, task.status, isRoleWorker)
+        presenter.initContentDependOnRoleAndStatus(task.id, task.status, isRoleWorker)
         setListeners()
     }
 

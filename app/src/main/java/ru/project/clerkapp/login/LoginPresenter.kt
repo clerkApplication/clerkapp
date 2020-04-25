@@ -22,12 +22,14 @@ class LoginPresenter : MvpPresenter<LoginView>() {
         if (email == ADMIN && password == ADMIN) {
             viewState.openAdminActivity()
         } else {
+            viewState.changeProgressBarState(true)
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     saveUserFromCloudFirestore(it.user!!.uid)
                 }
                 .addOnFailureListener {
                     viewState.showToast(it.message.toString())
+                    viewState.changeProgressBarState(false)
                 }
         }
     }
@@ -41,6 +43,9 @@ class LoginPresenter : MvpPresenter<LoginView>() {
             }
             .addOnFailureListener {
                 viewState.showToast(it.message.toString())
+            }
+            .addOnCompleteListener {
+                viewState.changeProgressBarState(false)
             }
     }
 

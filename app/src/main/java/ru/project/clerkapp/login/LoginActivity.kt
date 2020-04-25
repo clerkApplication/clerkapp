@@ -16,6 +16,7 @@ import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.AdminActivity
 import ru.project.clerkapp.main.MainActivity
 import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 
@@ -46,6 +47,10 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
 
     override fun openAdminActivity() {
         openActivityWithFinish(AdminActivity())
+    }
+
+    override fun changeProgressBarState(state: Boolean) {
+        loginProgressBar.changeVisibilityState(state)
     }
 
     private fun openActivityWithFinish(activity: MvpAppCompatActivity) {

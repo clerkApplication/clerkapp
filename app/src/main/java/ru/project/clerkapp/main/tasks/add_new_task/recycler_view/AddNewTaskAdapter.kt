@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_task_preformer.view.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.entities.User
 
-class AddNewTaskAdapter(private val users: List<User>) : RecyclerView.Adapter<AddNewTaskAdapter.ViewHolder>() {
+class AddNewTaskAdapter(private val users: ArrayList<User>) : RecyclerView.Adapter<AddNewTaskAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -27,6 +27,13 @@ class AddNewTaskAdapter(private val users: List<User>) : RecyclerView.Adapter<Ad
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.removePerformerImage.setOnClickListener {
+                users.remove(users[adapterPosition])
+                notifyDataSetChanged()
+            }
+        }
 
         fun bind(user: User) {
             with(itemView) {

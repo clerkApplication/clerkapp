@@ -17,12 +17,13 @@ class TaskPresenter : BaseLoadingPresenter<TaskView>() {
 
     private val cloudDatabase = FirebaseFirestore.getInstance()
 
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.changeLoadingState(false)
     }
 
-    fun initContent(taskReference: String, status: TaskStatus, isRoleWorker: Boolean) {
+    fun initContentDependOnRoleAndStatus(taskReference: String, status: TaskStatus, isRoleWorker: Boolean) {
         var newStatus = status.getStringFromStatus()
         if (isRoleWorker) {
             if (status is ToPerform) {

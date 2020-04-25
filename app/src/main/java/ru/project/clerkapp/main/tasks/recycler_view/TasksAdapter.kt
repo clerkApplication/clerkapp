@@ -19,6 +19,7 @@ class TasksAdapter(
 
     interface Listener {
         fun openTask(task: Task)
+        fun removeTask(task: Task)
     }
 
 
@@ -42,6 +43,9 @@ class TasksAdapter(
             itemView.setOnClickListener {
                 listener.openTask(tasks[adapterPosition])
             }
+            itemView.taskRemoveImageView.setOnClickListener {
+                listener.removeTask(tasks[adapterPosition])
+            }
         }
 
         @SuppressLint("SetTextI18n")
@@ -53,7 +57,7 @@ class TasksAdapter(
                 taskStatus.text = task.status.getStringFromStatus()
 
                 if (rank == WORKER) {
-                    taskCloseImageView.visibility = View.INVISIBLE
+                    taskRemoveImageView.visibility = View.INVISIBLE
                 }
             }
         }

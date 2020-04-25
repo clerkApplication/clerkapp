@@ -22,6 +22,7 @@ class AddNewTaskPresenter : BaseLoadingPresenter<AddNewTaskView>() {
     }
 
     fun createNewTask(task: Task) {
+        viewState.changeLoadingState(true)
         val cloudDatabase = FirebaseFirestore.getInstance()
         val taskHashMap = Task.objectToHashMap(task)
         cloudDatabase.collection(TASKS).document(task.id).set(taskHashMap)
@@ -31,6 +32,9 @@ class AddNewTaskPresenter : BaseLoadingPresenter<AddNewTaskView>() {
             }
             .addOnFailureListener {
                 viewState.showToast(it.message.toString())
+            }
+            .addOnCompleteListener {
+                viewState.changeLoadingState(false)
             }
     }
 

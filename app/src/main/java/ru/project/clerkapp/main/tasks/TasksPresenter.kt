@@ -3,6 +3,7 @@ package ru.project.clerkapp.main.tasks
 import androidx.fragment.app.Fragment
 import com.arellomobile.mvp.InjectViewState
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import ru.project.clerkapp.entities.Task
 import ru.project.clerkapp.entities.User
 import ru.project.clerkapp.main.base.BaseLoadingPresenter
@@ -18,6 +19,7 @@ class TasksPresenter : BaseLoadingPresenter<TasksView>() {
     private lateinit var user: User
     private val tasks = ArrayList<Task>()
     private val cloudDatabase = FirebaseFirestore.getInstance()
+
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -42,13 +44,22 @@ class TasksPresenter : BaseLoadingPresenter<TasksView>() {
         }
     }
 
+    fun removeTask(task: Task) {
+        cloudDatabase.collection(TASKS).document(task.id).delete()
+            .addOnSuccessListener {
+                tasks.remove(task)
+                viewState.updateAdapter()
+                viewState.showToast("Задача была успешно удалена!")
+            }
+            .addOnFailureListener {
+                viewState.showToast(it.message.toString())
+            }
+    }
+
     private fun loadTasksForSuperior(searchingParameter: String) {
         cloudDatabase.collection(TASKS).whereEqualTo(searchingParameter, user.email).get()
             .addOnSuccessListener { response ->
-                response.documents.forEach { document ->
-                    tasks.add(Task.mapToObject(document.data as HashMap<String, Any>))
-                }
-                viewState.initRecyclerView(tasks, user.rank)
+                invokeSuccessQuery(response)
             }
             .addOnFailureListener {
                 viewState.showToast(it.message.toString())
@@ -61,10 +72,7 @@ class TasksPresenter : BaseLoadingPresenter<TasksView>() {
     private fun loadTasksForWorker(searchingParameter: String) {
         cloudDatabase.collection(TASKS).whereArrayContains(searchingParameter, user.email).get()
             .addOnSuccessListener { response ->
-                response.documents.forEach { document ->
-                    tasks.add(Task.mapToObject(document.data as HashMap<String, Any>))
-                }
-                viewState.initRecyclerView(tasks, user.rank)
+                invokeSuccessQuery(response)
             }
             .addOnFailureListener {
                 viewState.showToast(it.message.toString())
@@ -72,6 +80,18 @@ class TasksPresenter : BaseLoadingPresenter<TasksView>() {
             .addOnCompleteListener {
                 viewState.changeLoadingState(false)
             }
+    }
+
+    private fun invokeSuccessQuery(response: QuerySnapshot) {
+        response.documents.forEach { document ->
+            tasks.add(Task.mapToObject(document.data as HashMap<String, Any>))
+        }
+        if (tasks.isEmpty()) {
+            viewState.changeStateOfEmptyQueryLayout(true)
+        } else {
+            viewState.initRecyclerView(tasks, user.rank)
+            viewState.changeStateOfEmptyQueryLayout(false)
+        }
     }
 
     private fun getSearchingParameter(): String {
