@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/defaultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/enter_new_data"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/phoneContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phoneContainer"
+            style="@style/defaultInputContainer"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@id/emailContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/profilePhoneEditText"
+                style="@style/defaultInput"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor" />
+
+            <View
+                android:id="@+id/phoneUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/profilePhoneEditText"
+                app:layout_constraintStart_toStartOf="@id/profilePhoneEditText"
+                app:layout_constraintTop_toBottomOf="@id/profilePhoneEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/emailContainer"
+            style="@style/defaultInputContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/profileEmailEditText"
+                style="@style/defaultInput"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,LabelFor" />
+
+            <View
+                android:id="@+id/emailUnderline"
+                style="@style/defaultInputBottomLine"
+                app:layout_constraintEnd_toEndOf="@id/profileEmailEditText"
+                app:layout_constraintStart_toStartOf="@id/profileEmailEditText"
+                app:layout_constraintTop_toBottomOf="@id/profileEmailEditText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/orange_button_background"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/ready_button"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

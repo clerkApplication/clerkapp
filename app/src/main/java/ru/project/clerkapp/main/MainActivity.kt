@@ -1,5 +1,6 @@
 package ru.project.clerkapp.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
+import ru.project.clerkapp.login.LoginActivity
 import ru.project.clerkapp.main.chat.ChatFragment
 import ru.project.clerkapp.main.profile.ProfileFragment
 import ru.project.clerkapp.main.tasks.TasksFragment
@@ -49,6 +51,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     fun changeToolbarTitle(title: String) {
         toolbarTitle.text = title
+    }
+
+    fun openLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setListeners() {

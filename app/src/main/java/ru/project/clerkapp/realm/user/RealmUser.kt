@@ -1,10 +1,13 @@
 package ru.project.clerkapp.realm.user
 
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 import ru.project.clerkapp.entities.User
 
 open class RealmUser : RealmObject() {
 
+    @PrimaryKey
+    var id: Int = 0
     var name: String = ""
     var lastName: String = ""
     var patronymic: String = ""

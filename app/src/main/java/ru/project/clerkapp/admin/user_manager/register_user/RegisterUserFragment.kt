@@ -79,7 +79,7 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
             presenter.createNewUser(user, passwordEditText.getTextFromEditText())
         }
 
-        birthdayContainer.setOnClickListener {
+        birthdayEditText.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)

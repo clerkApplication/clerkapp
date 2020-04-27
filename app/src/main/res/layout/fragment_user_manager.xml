@@ -22,12 +22,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/removeUserButton"
-        style="@style/whiteButton"
-        android:text="@string/remove_user"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeUserPasswordButton" />
+<!--    <Button-->
+<!--        android:id="@+id/removeUserButton"-->
+<!--        style="@style/whiteButton"-->
+<!--        android:text="@string/remove_user"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/changeUserPasswordButton" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

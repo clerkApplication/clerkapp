@@ -19,6 +19,13 @@ class UserGateway {
             realm.commitTransaction()
         }
 
+        fun editUser(user: User) {
+            val realm = Realm.getDefaultInstance()
+            realm.beginTransaction()
+            realm.copyToRealmOrUpdate(RealmUser.fromUser(user) )
+            realm.commitTransaction()
+        }
+
         fun removeUser() {
             val realm = Realm.getDefaultInstance()
             realm.beginTransaction()

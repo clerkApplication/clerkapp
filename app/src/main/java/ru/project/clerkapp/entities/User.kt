@@ -16,6 +16,19 @@ data class User(
 ) : Parcelable {
 
     companion object {
+        fun objectToHashMap(user: User): HashMap<String, Any> {
+            val map = HashMap<String, Any>()
+            map["name"] = user.name
+            map["lastName"] = user.lastName
+            map["patronymic"] = user.patronymic
+            map["email"] = user.email
+            map["rank"] = user.rank
+            map["phone"] = user.phone
+            map["gender"] = user.gender
+            map["birthday"] = user.birthday
+            return map
+        }
+
         fun mapToObject(map: HashMap<String, Any>): User {
             return User(
                 name = map["name"] as String,
@@ -28,6 +41,8 @@ data class User(
                 birthday = map["birthday"] as Long
             )
         }
+
+        fun generateIdByCurrentMillis(): String = System.currentTimeMillis().toString()
     }
 }
 

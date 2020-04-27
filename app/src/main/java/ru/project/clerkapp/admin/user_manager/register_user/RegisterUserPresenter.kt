@@ -1,10 +1,12 @@
 package ru.project.clerkapp.admin.user_manager.register_user
 
+import android.annotation.SuppressLint
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import ru.project.clerkapp.entities.User
+import ru.project.clerkapp.utils.Constants.USERS
 import java.text.SimpleDateFormat
 
 @InjectViewState
@@ -22,7 +24,7 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
             .addOnSuccessListener {
                 it.user?.uid?.let { userUid ->
                     val database = FirebaseFirestore.getInstance()
-                    database.collection("users").document(userUid).set(user)
+                    database.collection(USERS).document(userUid).set(user)
                         .addOnSuccessListener {
                             viewState.showToast("Пользователь создан")
                             viewState.backToUserManagerFragment()
@@ -39,6 +41,7 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
             }
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun dateToTimeStamp(date: String): Long {
         val formatter = SimpleDateFormat("dd.MM.yyyy")
         formatter.parse(date)?.let {
