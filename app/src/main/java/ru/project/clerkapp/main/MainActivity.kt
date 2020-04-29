@@ -1,6 +1,7 @@
 package ru.project.clerkapp.main
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -10,10 +11,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.login.LoginActivity
-import ru.project.clerkapp.main.chat.ChatFragment
+import ru.project.clerkapp.main.dialogs.DialogsFragment
 import ru.project.clerkapp.main.profile.ProfileFragment
 import ru.project.clerkapp.main.tasks.TasksFragment
 import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
+
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
@@ -38,6 +40,20 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             .beginTransaction()
             .replace(R.id.container, fragment)
             .commit()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+            changeBottomNavigationViewVisibility(true)
+        } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+            changeBottomNavigationViewVisibility(false)
+        }
+    }
+
+    fun changeBottomNavigationViewVisibility(state: Boolean) {
+        bottomNavigation.changeVisibilityState(state)
+        bottomNavigationLinesContainer.changeVisibilityState(state)
     }
 
     fun changeArrowBackVisibility(state: Boolean) {
@@ -71,7 +87,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             when (it.itemId) {
                 R.id.action_chat -> {
                     changeBottomNavigationLineVisibility(chatLine)
-                    presenter.openFragment(ChatFragment())
+                    presenter.openFragment(DialogsFragment())
                     true
                 }
                 R.id.action_task -> {

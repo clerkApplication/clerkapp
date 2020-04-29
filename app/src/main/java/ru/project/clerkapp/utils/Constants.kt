@@ -2,6 +2,7 @@ package ru.project.clerkapp.utils
 
 object Constants {
     const val USERS = "users"
+    const val USER = "user"
     const val TASKS = "tasks"
     const val TASK = "task"
     const val STATUS = "status"

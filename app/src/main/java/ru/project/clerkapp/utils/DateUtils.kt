@@ -21,4 +21,11 @@ object DateUtils {
         }
         return 0
     }
+
+    @SuppressLint("SimpleDateFormat")
+    fun Long.timeStampToTime(): String {
+        val sdf = SimpleDateFormat("hh:mm")
+        val date = Date(this)
+        return sdf.format(date)
+    }
 }

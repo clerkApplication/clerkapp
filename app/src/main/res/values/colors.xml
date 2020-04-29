@@ -24,8 +24,13 @@
 
     <color name="greyTextColor">#A5AABF</color>
 
+    <color name="chatBackground">#E2E8F9</color>
+    <color name="chatTextColor">#424B72</color>
+
     <color name="inactiveViewColor">#A5AABF</color>
 
     <color name="activeOrangeColor">#FF9B3F</color>
     <color name="inactiveOrangeColor">#FFCD9F</color>
+
+    <color name="chatToTextViewBackground">#C7C9D5</color>
 </resources>

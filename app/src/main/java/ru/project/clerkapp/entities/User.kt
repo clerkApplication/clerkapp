@@ -41,8 +41,6 @@ data class User(
                 birthday = map["birthday"] as Long
             )
         }
-
-        fun generateIdByCurrentMillis(): String = System.currentTimeMillis().toString()
     }
 }
 
