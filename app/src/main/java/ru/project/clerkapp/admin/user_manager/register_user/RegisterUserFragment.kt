@@ -17,6 +17,7 @@ import ru.project.clerkapp.entities.User
 import ru.project.clerkapp.utils.EditTextUtils.getTextFromEditText
 import ru.project.clerkapp.utils.EditTextUtils.setButtonEnableWatcher
 import ru.project.clerkapp.utils.EditTextUtils.setDefaultEditTextWatcher
+import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 import java.util.*
 
 class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
@@ -50,8 +51,9 @@ class RegisterUserFragment : MvpAppCompatFragment(), RegisterUserView {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun changeButtonState(state: Boolean) {
-        createButton.isEnabled = state
+    override fun changeProgressState(state: Boolean) {
+        createButton.isEnabled = !state
+        progressBar.changeVisibilityState(state)
     }
 
     override fun backToUserManagerFragment() {

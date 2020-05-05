@@ -6,6 +6,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import ru.project.clerkapp.entities.User
+import ru.project.clerkapp.realm.user.UserGateway
 import ru.project.clerkapp.utils.Constants.USERS
 import java.text.SimpleDateFormat
 
@@ -13,10 +14,10 @@ import java.text.SimpleDateFormat
 class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
 
     fun createNewUser(user: User, password: String) {
-        viewState.changeButtonState(false)
+        viewState.changeProgressState(true)
 
         if (!areFieldsValid(user)) {
-            viewState.changeButtonState(true)
+            viewState.changeProgressState(false)
             return
         }
 
@@ -26,17 +27,18 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
                     val database = FirebaseFirestore.getInstance()
                     database.collection(USERS).document(userUid).set(user)
                         .addOnSuccessListener {
+                            clearCurrentUser()
                             viewState.showToast("Пользователь создан")
                             viewState.backToUserManagerFragment()
                         }
                         .addOnFailureListener { exception ->
                             viewState.showToast(exception.message.toString())
-                            viewState.changeButtonState(true)
+                            viewState.changeProgressState(false)
                         }
                 }
             }
             .addOnFailureListener { exception ->
-                viewState.changeButtonState(true)
+                viewState.changeProgressState(false)
                 viewState.showToast(exception.message.toString())
             }
     }
@@ -48,6 +50,11 @@ class RegisterUserPresenter : MvpPresenter<RegisterUserView>() {
             return it.time
         }
         return 0
+    }
+
+    private fun clearCurrentUser() {
+        FirebaseAuth.getInstance().signOut()
+        UserGateway.removeUser()
     }
 
     private fun areFieldsValid(user: User): Boolean {

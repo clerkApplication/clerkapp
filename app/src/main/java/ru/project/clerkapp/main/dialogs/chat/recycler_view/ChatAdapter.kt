@@ -56,14 +56,14 @@ class ChatAdapter(
 
     inner class MessageToViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(message: Message) {
-            itemView.chatMessageTo.text = message.message
+            itemView.chatMessageTo.text = message.text
             itemView.timeMessageTo.text = message.date.timeStampToTime()
         }
     }
 
     inner class MessageFromViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(message: Message) {
-            itemView.chatMessageFrom.text = message.message
+            itemView.chatMessageFrom.text = message.text
             itemView.timeMessageFrom.text = message.date.timeStampToTime()
         }
     }

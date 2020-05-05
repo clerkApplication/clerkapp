@@ -45,6 +45,9 @@ class UserManagerFragment : MvpAppCompatFragment(), UserManagerView {
         changeUserPasswordButton.setOnClickListener {
             presenter.replaceFragment(ChangeUserPasswordFragment())
         }
+        logoutAdminPanelButton.setOnClickListener {
+            (activity as AdminActivity).logoutFromAdminPanel()
+        }
     }
 
     override fun openRegisterUserScreen(fragment: Fragment) {

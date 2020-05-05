@@ -6,6 +6,8 @@ object Constants {
     const val TASKS = "tasks"
     const val TASK = "task"
     const val STATUS = "status"
+    const val DIALOGS = "dialogs"
+    const val MESSAGES = "messages"
     const val ADMIN = "admin"
 
     const val WORKER = "Работник"

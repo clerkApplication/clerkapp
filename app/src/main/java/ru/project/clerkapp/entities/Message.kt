@@ -3,8 +3,8 @@ package ru.project.clerkapp.entities
 import java.io.Serializable
 
 class Message(
-    val date: Long,
-    val message: String,
+    val date: Long = System.currentTimeMillis(),
+    val text: String,
     val fromEmail: String,
     val toEmail: String
 ) : Serializable {
@@ -13,7 +13,7 @@ class Message(
         fun objectToHashMap(message: Message): HashMap<String, Any> {
             val map = HashMap<String, Any>()
             map["date"] = message.date
-            map["message"] = message.message
+            map["text"] = message.text
             map["fromEmail"] = message.fromEmail
             map["toEmail"] = message.toEmail
             return map
@@ -22,7 +22,7 @@ class Message(
         fun mapToObject(map: HashMap<String, Any>): Message {
             return Message(
                 date = map["date"] as Long,
-                message = map["message"] as String,
+                text = map["text"] as String,
                 fromEmail = map["fromEmail"] as String,
                 toEmail = map["toEmail"] as String
             )

@@ -61,6 +61,7 @@
     <string name="logout">Выйти</string>
     <string name="send_message_button">Отправить сообщение</string>
     <string name="write_message">Написать сообщение...</string>
+    <string name="empty_message_stub">В этом чате еще нет сообщений</string>
 
 
     <string-array name="ranks">

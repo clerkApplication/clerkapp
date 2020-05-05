@@ -1,5 +1,6 @@
 package ru.project.clerkapp.admin
 
+import android.content.Intent
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -7,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.toolbar.*
 import ru.project.clerkapp.R
 import ru.project.clerkapp.admin.user_manager.UserManagerFragment
+import ru.project.clerkapp.login.LoginActivity
 import ru.project.clerkapp.utils.ViewUtils.changeVisibilityState
 
 class AdminActivity : MvpAppCompatActivity(), AdminView {
@@ -39,6 +41,12 @@ class AdminActivity : MvpAppCompatActivity(), AdminView {
 
     fun changeToolbarTitle(title: String) {
         toolbarTitle.text = title
+    }
+
+    fun logoutFromAdminPanel() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setListeners() {

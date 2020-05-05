@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     android:background="@color/chatBackground">
 
+    <TextView
+        android:id="@+id/emptyMessagesStub"
+        style="@style/defaultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_empty_messages"
+        android:drawablePadding="10dp"
+        android:text="@string/empty_message_stub"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"

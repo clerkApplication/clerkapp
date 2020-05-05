@@ -14,5 +14,5 @@ interface RegisterUserView : MvpView {
     fun backToUserManagerFragment()
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun changeButtonState(state: Boolean)
+    fun changeProgressState(state: Boolean)
 }
