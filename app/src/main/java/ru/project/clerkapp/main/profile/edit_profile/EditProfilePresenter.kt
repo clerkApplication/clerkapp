@@ -33,7 +33,7 @@ class EditProfilePresenter : BaseLoadingPresenter<EditProfileView>() {
         val newUser = updateUserFields(phone, email)
         cloudDatabase.collection(USERS).document(firebaseUser.uid).update(User.objectToHashMap(newUser))
             .addOnSuccessListener {
-                updateEmailForFirebaseAuth(newUser.email)
+                updateEmailForFirebaseAuth()
                 updateLocalUser(newUser)
                 viewState.showToast("Данные успешно отредактированы!")
                 viewState.returnToPreviousFragment()
@@ -46,7 +46,7 @@ class EditProfilePresenter : BaseLoadingPresenter<EditProfileView>() {
             }
     }
 
-    private fun updateEmailForFirebaseAuth(email: String) {
+    private fun updateEmailForFirebaseAuth() {
         firebaseUser.updateEmail(user.email)
     }
 

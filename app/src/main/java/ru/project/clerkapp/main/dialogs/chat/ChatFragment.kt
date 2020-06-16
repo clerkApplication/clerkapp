@@ -98,3 +98,4 @@ class ChatFragment : BaseLoadingFragment(), ChatView {
         })
     }
 }
+

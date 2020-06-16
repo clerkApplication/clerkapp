@@ -28,11 +28,6 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        enterButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         handleEditTextsChangeListener()
         setListeners()
     }

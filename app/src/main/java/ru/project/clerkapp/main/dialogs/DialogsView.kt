@@ -10,3 +10,4 @@ interface DialogsView : BaseLoadingView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun initRecyclerView(users: List<User>)
 }
+
