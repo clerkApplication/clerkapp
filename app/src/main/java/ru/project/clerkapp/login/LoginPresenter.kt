@@ -19,6 +19,9 @@ class LoginPresenter : MvpPresenter<LoginView>() {
     }
 
     fun signIn(email: String, password: String) {
+        if (!areFieldsValid(email, password)) {
+            return
+        }
         if (email == ADMIN && password == ADMIN) {
             viewState.openAdminActivity()
         } else {
@@ -32,6 +35,18 @@ class LoginPresenter : MvpPresenter<LoginView>() {
                     viewState.changeProgressBarState(false)
                 }
         }
+    }
+
+    private fun areFieldsValid(email: String, password: String): Boolean {
+        if (email.isEmpty()) {
+            viewState.showToast("Заполните электронную почту!")
+            return false
+        }
+        if (password.isEmpty()) {
+            viewState.showToast("Заполните пароль!")
+            return false
+        }
+        return true
     }
 
     private fun saveUserFromCloudFirestore(uid: String) {
